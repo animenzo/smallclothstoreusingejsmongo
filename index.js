@@ -1,11 +1,12 @@
 const express = require('express')
+const http = require("http")
 const app = express()
 const cookieParser = require('cookie-parser')
 
 const path = require('path')
 const expressSession = require("express-session")
 const flash = require("connect-flash")
-
+const server = http.createServer(app)
 
 
 const ownersRouter = require('./routes/ownersRouter')
@@ -44,6 +45,6 @@ app.use("/products",productsRouter)
 
 
 const PORT = process.env.PORT || 3000; 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
